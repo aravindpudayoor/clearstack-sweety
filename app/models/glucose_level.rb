@@ -1,8 +1,7 @@
 class GlucoseLevel < ApplicationRecord
-  belongs_to :user#, optional: true
+  belongs_to :user
 
-
-  ## Below constant will take care of the maxium allowed glucose reading per day
+  ## DAILY_LIMIT will take care of the maxium allowed glucose reading per day
   DAILY_LIMIT = 4
 
   ## validations
@@ -24,9 +23,9 @@ class GlucoseLevel < ApplicationRecord
       	start_date = (Date.today - 30.days).beginning_of_day
       	end_date = Date.today.end_of_day
       end
-      where("DATE(created_at) >= ? AND DATE(created_at) <= ?", start_date, end_date).order(created_at: :asc)
+      where("DATE(created_at) >= ? AND DATE(created_at) <= ?", start_date, end_date).order(created_at: :desc)
     else
-      order(created_at: :asc)
+      order(created_at: :desc)
     end
   end
 end

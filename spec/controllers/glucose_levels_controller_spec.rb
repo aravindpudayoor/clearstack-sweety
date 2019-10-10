@@ -94,49 +94,4 @@ RSpec.describe GlucoseLevelsController, type: :controller do
       end
     end
   end
-
-  # describe "PUT #update" do
-  #   context "with valid params" do
-  #     let(:new_attributes) {
-  #       skip("Add a hash of attributes valid for your model")
-  #     }
-
-  #     it "updates the requested glucose_level" do
-  #       glucose_level = GlucoseLevel.create! valid_attributes
-  #       put :update, params: {id: glucose_level.to_param, glucose_level: new_attributes}, session: valid_session
-  #       glucose_level.reload
-  #       skip("Add assertions for updated state")
-  #     end
-
-  #     it "redirects to the glucose_level" do
-  #       glucose_level = GlucoseLevel.create! valid_attributes
-  #       put :update, params: {id: glucose_level.to_param, glucose_level: valid_attributes}, session: valid_session
-  #       expect(response).to redirect_to(glucose_level)
-  #     end
-  #   end
-
-  #   context "with invalid params" do
-  #     it "returns a success response (i.e. to display the 'edit' template)" do
-  #       glucose_level = GlucoseLevel.create! valid_attributes
-  #       put :update, params: {id: glucose_level.to_param, glucose_level: invalid_attributes}, session: valid_session
-  #       expect(response).to be_successful
-  #     end
-  #   end
-  # end
-
-  # describe "DELETE #destroy" do
-  #   it "destroys the requested glucose_level" do
-  #     glucose_level = GlucoseLevel.create! valid_attributes
-  #     expect {
-  #       delete :destroy, params: {id: glucose_level.to_param}, session: valid_session
-  #     }.to change(GlucoseLevel, :count).by(-1)
-  #   end
-
-  #   it "redirects to the glucose_levels list" do
-  #     glucose_level = GlucoseLevel.create! valid_attributes
-  #     delete :destroy, params: {id: glucose_level.to_param}, session: valid_session
-  #     expect(response).to redirect_to(glucose_levels_url)
-  #   end
-  # end
-
 end

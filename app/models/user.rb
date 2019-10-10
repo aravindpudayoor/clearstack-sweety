@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 	### Associations
-	has_many :glucose_levels, dependent: :destroy  
+	has_many :glucose_levels, dependent: :destroy  ## User have many glucose level readings
 end

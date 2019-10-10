@@ -1,12 +1,6 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [
-    :inside
-  ]
-
+  
+  ## Root path/Landing page
   def home
   end
-
-  def inside
-  end
-
 end
