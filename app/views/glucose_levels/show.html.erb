@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @glucose_level.value %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @glucose_level.user %>
+</p>
+
+<%= link_to 'Edit', edit_glucose_level_path(@glucose_level) %> |
+<%= link_to 'Back', glucose_levels_path %>

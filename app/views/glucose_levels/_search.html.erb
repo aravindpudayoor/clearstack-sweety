@@ -1,0 +1,43 @@
+
+<%= form_tag glucose_levels_path, method: 'get', html: {role: "form"} do %>
+<p>
+  <div class="form-group col-md-12">
+    <label for="reports" class="col-sm-2">Reports</label>
+    <div class="col-sm-4 ">
+      <%= radio_button_tag :report, 'daily' %> Daily<br />
+      <%= radio_button_tag :report, 'month_to_date' %> Month to Date(Current Month)<br />
+      <%= radio_button_tag :report, 'monthly' %> Monthly (Last 30 days)<br />
+    </div>
+  </div>
+
+  <div class="hide" id="end_date">
+    <div class="form-group col-md-12">
+      <label for="end_date" class="col-sm-2">End Date</label>
+      <div class="col-sm-4 ">
+        <%= text_field_tag :end_date, nil, placeholder: 'End Date', id: "datepick-enddate" %>
+      </div>
+    </div>
+  </div>
+
+  <%= submit_tag "Fetch", :name => nil, class: "btn btn-sm btn-primary" %>
+  <%= link_to "All", glucose_levels_path, {class: "btn btn-sm btn-link"} %>
+</p>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('input[type=radio][name=report]').change(function() {
+      var value = $(this).val();
+      if (value == "month_to_date") {
+        $("#end_date").removeClass("hide");
+        $("#datepick-enddate").datepicker({
+          autoclose: true,
+          format: "dd/mm/yyyy"
+        })
+      } else {
+        $("#end_date").addClass("hide");
+        $("#datepick-enddate").val("");
+      }
+    });
+  });
+</script>

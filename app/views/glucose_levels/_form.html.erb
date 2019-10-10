@@ -1,0 +1,27 @@
+<%= form_with(model: glucose_level, local: true) do |form| %>
+  <% if glucose_level.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(glucose_level.errors.count, "error") %> prohibited this glucose_level from being saved:</h2>
+
+      <ul>
+      <% glucose_level.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.number_field :value, id: :glucose_level_value %> mg/dl
+  </div>
+
+  <div class="field">
+    <%#= form.label :user_id %>
+    <%= form.hidden_field :user_id, id: :glucose_level_user_id, value: current_user.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
