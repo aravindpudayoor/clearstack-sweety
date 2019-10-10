@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: sweety_production
-  username: sweety
-  password: <%= ENV['SWEETY_DATABASE_PASSWORD'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
