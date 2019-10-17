@@ -54,4 +54,4 @@ production:
   adapter: postgresql
   encoding: unicode
   database: sweety_production
-  host: clearstack-sweety.herokuapp.com
+  host: <%= ENV['DATABASE_HOST'] %>
