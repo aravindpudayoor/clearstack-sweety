@@ -45,9 +45,10 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'shoulda', '~> 3.6'
   gem 'rails-controller-testing', '~> 0.0.3'
+  gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.4'
   gem 'faker'
 end
 

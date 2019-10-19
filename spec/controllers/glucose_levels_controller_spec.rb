@@ -27,7 +27,7 @@ require 'rails_helper'
 RSpec.describe GlucoseLevelsController, type: :controller do
 
   before do
-    @user = FactoryGirl.create(:user)
+    @user = create(:user)
     sign_in @user
   end
 
@@ -39,13 +39,14 @@ RSpec.describe GlucoseLevelsController, type: :controller do
   # GlucoseLevel. As you add validations to GlucoseLevel, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    FactoryGirl.build(:glucose_level, user: @user).attributes.symbolize_keys
+    build(:glucose_level, user: @user).attributes.symbolize_keys
   }
 
   let(:invalid_attributes) {
-    FactoryGirl.build(:glucose_level).attributes.symbolize_keys
+    build(:user).attributes.symbolize_keys
   }
 
+  
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # GlucoseLevelsController. Be sure to keep this updated too.
@@ -88,8 +89,10 @@ RSpec.describe GlucoseLevelsController, type: :controller do
     end
 
     context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {glucose_level: invalid_attributes}, session: valid_session
+      let(:new_attributes) {{ value: nil, user: @user}}
+
+      it "returns a success response" do
+        post :create, params: {glucose_level: new_attributes}, session: valid_session
         expect(response).to be_successful
       end
     end

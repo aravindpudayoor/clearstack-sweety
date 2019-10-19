@@ -1,6 +1,6 @@
 class GlucoseLevelsController < ApplicationController
   before_action :authenticate_user!, :set_user
-  before_action :check_daily_limit, only: [:create]
+  # before_action :check_daily_limit, only: [:create]
 
   ## Below action will fetch glucose levels of a particular user 
   ## calculating min, max and avegrage of reading
@@ -26,7 +26,9 @@ class GlucoseLevelsController < ApplicationController
   def create
     @glucose_level = GlucoseLevel.new(glucose_level_params)
     respond_to do |format|
-      if @glucose_level.save
+      @glucose_level.valid?
+      if @glucose_level.errors.blank?
+        @glucose_level.save
         format.html { redirect_to glucose_levels_path, notice: 'Glucose level was successfully created.' }
       else
         format.html { render :new }
@@ -49,7 +51,8 @@ class GlucoseLevelsController < ApplicationController
 
   ## Below action make will sure that there are no more than specified(here 4) entries on a given day.
   def check_daily_limit
-    unless @user.glucose_levels.where("DATE(created_at) = ?", DateTime.now.to_date).count < GlucoseLevel::DAILY_LIMIT
+    # unless @user.glucose_levels.where("DATE(created_at) = ?", DateTime.now.to_date).count < GlucoseLevel::DAILY_LIMIT
+    unless @user.glucose_levels.of_date(Date.today).count < GlucoseLevel::DAILY_LIMIT
       respond_to do |format|
         format.html { redirect_to glucose_levels_path, alert: 'Daily Limit exceeds, You cant create a new entry today' } 
       end
